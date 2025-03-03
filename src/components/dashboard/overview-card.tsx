@@ -1,7 +1,8 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { ReactNode } from "react"
 
-interface OverviewCardProps {
+
+export interface IOverviewCardProps {
   title: string
   value: string
   description?: string
@@ -9,7 +10,7 @@ interface OverviewCardProps {
   className?: string
 }
 
-export function OverviewCard({ title, value, description, icon, className }: OverviewCardProps) {
+export function OverviewCard({ title, value, description, icon, className }: IOverviewCardProps) {
   return (
     <Card className={className}>
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">

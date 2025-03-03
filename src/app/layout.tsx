@@ -24,7 +24,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <div className='flex flex-col items-center justify-center'>
           {children}
+          </div>
         </ThemeProvider>
       </body>
     </html>
