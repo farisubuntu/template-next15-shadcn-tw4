@@ -1,34 +1,24 @@
-import '@/styles/globals.css';
-import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
-import { ThemeProvider } from '@/components/theme-provider';
-
-const inter = Inter({ subsets: ['latin'] });
+import "@/styles/globals.css";
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import {MainLayout} from "@/components/main-layout";
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'Modern UI Dashboard',
-  description: 'A modern UI dashboard built with Next.js and shadcn/ui',
+	title: "Modern UI Dashboard",
+	description: "A modern UI dashboard built with Next.js and shadcn/ui",
 };
 
 export default function RootLayout({
-  children,
+	children,
 }: {
-  children: React.ReactNode;
+	children: React.ReactNode;
 }) {
-  return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <div className='flex flex-col items-center justify-center'>
-          {children}
-          </div>
-        </ThemeProvider>
-      </body>
-    </html>
-  );
+	return (
+		<html lang="en" suppressHydrationWarning>
+			<body className={inter.className}>
+				<MainLayout>{children}</MainLayout>
+			</body>
+		</html>
+	);
 }

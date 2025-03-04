@@ -27,7 +27,7 @@ const data = [
 
 export function AnalyticsChart() {
   return (
-    <Card className="col-span-4">
+    <Card className="md:flex-1">
       <CardHeader>
         <CardTitle>Analytics Overview</CardTitle>
         <CardDescription>
