@@ -7,7 +7,7 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { StaticImageData } from "next/image";
+import * as React from "react";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -17,8 +17,7 @@ import {
 	DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
 import { Button } from "../ui/button";
-import Avatar from "./user-avatar.png";
-
+import { CustomAvatar } from "../ui/custom-avatar";
 export interface MenuItemProps {
 	label: string;
 	value?: string;
@@ -30,16 +29,16 @@ export interface MenuItemProps {
 export interface UserMenuProps {
 	name: string;
 	role: string;
-	avatar: string | StaticImageData;
+	avatar: React.ReactNode;
 	subscription?: string;
 }
 
 const defaultProfile: UserMenuProps = {
 	name: "Eugene An",
 	role: "Prompt Engineer",
-	avatar: Avatar,
+	avatar: <CustomAvatar />,
 	subscription: "Free Trial",
-} satisfies Required<UserMenuProps>;
+};
 
 export function UserMenu({
 	name = defaultProfile.name,
@@ -62,11 +61,7 @@ export function UserMenu({
 
 	return (
 		<DropdownMenu>
-			<DropdownMenuTrigger asChild>
-				<Button variant="ghost" className="relative h-8 w-8 rounded-full">
-					<Image src={avatar} alt="avatar" fill className="rounded-full" />
-				</Button>
-			</DropdownMenuTrigger>
+			<DropdownMenuTrigger asChild>{avatar}</DropdownMenuTrigger>
 			<DropdownMenuContent className="w-56" align="end">
 				<DropdownMenuLabel className="font-normal">
 					<div className="flex flex-col space-y-1">
@@ -78,7 +73,11 @@ export function UserMenu({
 
 				{menuItems.map((item, index) => (
 					<DropdownMenuItem key={index}>
-						<Link href={item.href} target={item.external ? "_blank" : "_self"} className="flex items-center gap-2">
+						<Link
+							href={item.href}
+							target={item.external ? "_blank" : "_self"}
+							className="flex items-center gap-2"
+						>
 							{item.icon}
 							{item.label}
 						</Link>

@@ -64,37 +64,46 @@ const menuItems: ListItemProps[] = [
 	},
 ];
 
-export function MainNav({
-	itemsList = menuItems,
-}: {
-	itemsList?: ListItemProps[];
-}) {
+export function MainNav() {
 	const pathname = usePathname();
 
 	return (
 		<NavigationMenu>
 			<NavigationMenuList>
-        
-				{menuItems.map((item) => (
-					<NavigationMenuItem key={item.href}>
-						<Link href={item.href} legacyBehavior passHref>
-							<NavigationMenuLink className={navigationMenuTriggerStyle()}>
-								{item.title}
-							</NavigationMenuLink>
-						</Link>
-						{item.items && (
-							<NavigationMenuContent>
-								<ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-									{item.items.map((item) => (
-										<ListItem key={item.href} href={item.href} title={item.title}>
-											{item.description}
-										</ListItem>
-									))}
-								</ul>
-							</NavigationMenuContent>
-						)}
-					</NavigationMenuItem>
-				))}
+				<NavigationMenuItem>
+					<Link href="/" legacyBehavior passHref>
+						<NavigationMenuLink className={navigationMenuTriggerStyle()}>
+							Dashboard
+						</NavigationMenuLink>
+					</Link>
+				</NavigationMenuItem>
+
+				<NavigationMenuItem>
+					<NavigationMenuTrigger>Components</NavigationMenuTrigger>
+					<NavigationMenuContent>
+						<ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+							<ListItem href="/components/buttons" title="Buttons">
+								Standard button elements and variants
+							</ListItem>
+							<ListItem href="/components/cards" title="Cards">
+								Versatile card components for various content
+							</ListItem>
+							<ListItem href="/components/forms" title="Forms">
+								Form components and validation examples
+							</ListItem>
+							<ListItem href="/components/tables" title="Tables">
+								Data tables with sorting and filtering
+							</ListItem>
+						</ul>
+					</NavigationMenuContent>
+				</NavigationMenuItem>
+				<NavigationMenuItem>
+					<Link href="/analytics" legacyBehavior passHref>
+						<NavigationMenuLink className={navigationMenuTriggerStyle()}>
+							Analytics
+						</NavigationMenuLink>
+					</Link>
+				</NavigationMenuItem>
 			</NavigationMenuList>
 		</NavigationMenu>
 	);
