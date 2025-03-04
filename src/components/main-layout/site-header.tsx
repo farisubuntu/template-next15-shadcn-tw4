@@ -9,14 +9,14 @@ import * as React from "react";
 import { UserMenu } from "./user-menu";
 import Image from "next/image";
 import AppLogo from "@/assets/app-logo.svg";
-
+import { GlobalSearch } from "./global-search";
 let userLoggedIn = true;
 
 export function SiteHeader() {
 	const [isLoggedIn, setIsLoggedIn] = React.useState(userLoggedIn);
 
 	return (
-		<header className="sticky top-0 z-40 flex justify-center w-full border-b bg-background">
+		<header className="sticky top-0 z-40 flex justify-center w-full border-b bg-background text-foreground">
 			<div className="container flex h-16 items-center space-x-4 sm:justify-between sm:space-x-0">
 				{/* Logo section */}
 				<div className="flex gap-6 md:gap-10">
@@ -30,13 +30,9 @@ export function SiteHeader() {
 				{/* Search Right section */}
 				<div className="flex flex-1 items-center justify-end space-x-4">
 					{/* Search */}
-					<div className="w-full flex-1 md:w-auto md:flex-none">
-						<Button variant="outline" size="icon" className="mr-2">
-							<Search className="h-4 w-4" />
-							<span className="sr-only">Search</span>
-						</Button>
-					</div>
+					<div className="w-full flex-1 md:w-auto md:flex-none"></div>
 
+					<GlobalSearch />
 					<nav className="flex items-center space-x-2">
 						<ThemeToggle />
 
