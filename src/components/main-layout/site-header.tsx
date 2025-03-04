@@ -7,10 +7,10 @@ import { MainNav } from "@/components/main-layout/main-nav";
 import { Search } from "lucide-react";
 import * as React from "react";
 import { UserMenu } from "./user-menu";
-
+import Image from "next/image";
+import AppLogo from "@/assets/app-logo.svg";
 
 let userLoggedIn = true;
-
 
 export function SiteHeader() {
 	const [isLoggedIn, setIsLoggedIn] = React.useState(userLoggedIn);
@@ -18,16 +18,16 @@ export function SiteHeader() {
 	return (
 		<header className="sticky top-0 z-40 flex justify-center w-full border-b bg-background">
 			<div className="container flex h-16 items-center space-x-4 sm:justify-between sm:space-x-0">
-
 				{/* Logo section */}
 				<div className="flex gap-6 md:gap-10">
 					<Link href="/" className="flex items-center space-x-2">
+						<Image src={AppLogo} alt="alt" width={32} height={32} />
 						<span className="inline-block font-bold">Modern UI</span>
 					</Link>
 					<MainNav />
 				</div>
 
-				{/* Search Right section */}	
+				{/* Search Right section */}
 				<div className="flex flex-1 items-center justify-end space-x-4">
 					{/* Search */}
 					<div className="w-full flex-1 md:w-auto md:flex-none">

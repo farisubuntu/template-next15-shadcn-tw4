@@ -16,8 +16,12 @@ import {
 	DropdownMenuSeparator,
 	DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
+
 import { Button } from "../ui/button";
+
+import UserAvatar from "@/assets/user-avatar.svg";
 import { CustomAvatar } from "../ui/custom-avatar";
+
 export interface MenuItemProps {
 	label: string;
 	value?: string;
@@ -36,7 +40,7 @@ export interface UserMenuProps {
 const defaultProfile: UserMenuProps = {
 	name: "Eugene An",
 	role: "Prompt Engineer",
-	avatar: <CustomAvatar />,
+	avatar: <CustomAvatar src={UserAvatar.src} alt="user-avatar" />,
 	subscription: "Free Trial",
 };
 
